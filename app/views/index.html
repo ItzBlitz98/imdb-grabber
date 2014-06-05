@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>imdB Grabber</title>
+    <link href="../css/main.css" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <div id="title_bar">
+        <div class="title">imdB Grabber</div>
+        <ul>
+            <li class="close_window" onclick="win.close()">x</li>
+            <li class="min_window" onclick="win.minimize();">-</li>
+        </ul>
+    </div>
+    <div id="loading_bg">
+    <div id="loading_container">
+        <div id="loading_text">
+            Loading
+        </div>
+        <div id="loadpulse">
+            <div class="segment">
+                <div id="layer1" class="ball"></div>
+                <div id="layer7" class="pulse"></div>
+            </div>
+            <div class="segment">
+                <div id="layer2" class="ball"></div>
+                <div id="layer8" class="pulse"></div>
+            </div>
+            <div class="segment">
+                <div id="layer3" class="ball"></div>
+                <div id="layer9" class="pulse"></div>
+            </div>
+            <div class="segment">
+                <div id="layer4" class="ball"></div>
+                <div id="layer10" class="pulse"></div>
+            </div>
+            <div class="segment">
+                <div id="layer5" class="ball"></div>
+                <div id="layer11" class="pulse"></div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div id="search_container">
+        <h3>Search for a movie: </h3>
+        <input id="movie_search" type="text" placeholder="IMDB Title" name="movie">
+        <div id="search_loader" class="load_icon"></div>
+        <div id="autocomplete">
+            <ul>
+            </ul>
+        </div>
+        <div id="search" class="btn">Get Film</div>
+        <div id="error">Error message here</div>
+    </div>
+
+    <div id="myModal" class="reveal-modal">
+        <a class="close-reveal-modal">&#215;</a>
+        <div id="modalBody">
+        <div id="modalHeader">
+        Preview
+        </div>
+            <div id="preview">
+                <div id="movie_cover">
+                    <img src="https://i.imgur.com/qdt2XZO.jpg" height="400px" width="283px">
+                    <div id="glass"></div>
+                </div>
+                <div id="movie_preview_text">
+                    <div id="movie_title">Title: <span></span></div>
+                    <div id="movie_year">Year: <span></span></div>
+                    <div id="movie_genre">Genre: <span></span></div>
+                    <div id="movie_rating">Rating: <span></span></div>
+                    <div id="movie_runtime">Runtime: <span></span></div>
+                    <div id="movie_director">Director: <span></span></div>
+                    <div id="movie_cast">Cast: <span></span></div>
+                    <div id="movie_plot">Plot: <span></span></div>
+                    <div id="movie_ulr">Imdb Url: <span></span></div>
+                </div>
+            </div>
+
+            <div id="bbcode">
+                <textarea id="txtarea" class="bbcode" onClick="SelectAll('txtarea');">
+
+                </textarea>
+            </div>
+
+            <div id="html">
+                <textarea id="txtarea2" class="html" onClick="SelectAll('txtarea2');">
+
+                </textarea>
+            </div>
+
+        </div>
+        <div id="modalFooter">
+            <ul>
+                <li id="mpreview" class="active"><span>Preview</span></li>
+                <li id="mbbcode"><span>BBCode</span></li>
+                <li id="mhtml"><span>Html</span></li>
+            </ul>
+        </div>
+    </div>
+    <div id="footer">
+        <div id="status">
+            <div id="led"></div>
+            <div id="status-text"></div>
+        </div>
+    </div>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/jquery.reveal.js"></script>
+    <script src="../js/index.js"></script>
+</body>
+
+</html>

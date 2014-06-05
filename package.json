@@ -1,0 +1,26 @@
+{
+  "name": "imdB-Grabber",
+  "version": "0.0.1",
+  "description": "A simple app to get imdb infomation to post to a forum",
+  "keywords": [],
+
+  "dependencies": {
+    "request": "2.36.0",
+    "imgur-node-api": "0.0.2"
+  },
+  "devDependencies": {
+    "matchdep": "~0.1.2",
+    "grunt": "~0.4.1",
+    "grunt-node-webkit-builder": "~0.1.14",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-concat": "~0.1.3",
+    "grunt-contrib-jshint": "~0.4.3",
+    "grunt-contrib-clean": "~0.4.1",
+    "grunt-contrib-rename": "0.0.3",
+    "grunt-contrib-compress": "~0.5.3",
+    "concat-files": "~0.1.0"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}

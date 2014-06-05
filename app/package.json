@@ -1,0 +1,18 @@
+{
+  "name": "imdB-Grabber",
+  "main": "views/index.html",
+  "version": "0.0.1",
+  "single-instance": true,
+  "window": {
+    "title": "imdB-Grabber",
+    "toolbar": false,
+    "frame": false,
+    "width": 620,
+    "height": 618,
+    "min_width": 620,
+    "min_height": 618,
+    "resizable": false,
+    "position": "center"
+  },
+  "chromium-args": "--child-clean-exit"
+}
