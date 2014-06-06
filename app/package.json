@@ -14,5 +14,9 @@
     "resizable": false,
     "position": "center"
   },
+  "dependencies": {
+    "request": "2.36.0",
+    "imgur-node-api": "0.0.2"
+  },
   "chromium-args": "--child-clean-exit"
 }
