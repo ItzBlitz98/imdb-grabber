@@ -12,7 +12,8 @@
     "min_width": 620,
     "min_height": 618,
     "resizable": false,
-    "position": "center"
+    "position": "center",
+    "icon": "img/icon.png"
   },
   "dependencies": {
     "request": "2.36.0",
