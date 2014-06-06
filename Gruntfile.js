@@ -22,9 +22,9 @@ module.exports = function (grunt) {
             modules: {
                 expand: true,
                 dot: true,
-                cwd: 'node_modules/*',
-                src: 'node_modules/',
-                dest: 'dist/'
+                cwd: 'node_modules/',
+                src: '**',
+                dest: 'dist/node_modules'
             },
             packageinfo: {
                 src: 'app/package.json',
