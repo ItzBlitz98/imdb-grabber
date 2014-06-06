@@ -1,0 +1,10 @@
+node_modules
+resources
+tmp
+dist
+dist-pkg
+.tmp
+.sass-cache
+bower_components
+test/bower_components
+.jshintrc
