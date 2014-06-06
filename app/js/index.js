@@ -23,7 +23,9 @@ $("#search").click(function () {
 
 });
 
-$("#movie_search").keyup(function () {
+$('#movie_search').myNoteAjaxPlugin({waitFor: '500'});
+
+function moviesearch(title){
     var title = $('#movie_search').val();
     var toid = title.substr(0, 2);
     if (toid !== 'tt') {
@@ -32,7 +34,7 @@ $("#movie_search").keyup(function () {
             apisearch(title);
         }
     };
-});
+}
 
 $("#autocomplete ul").on("click", "li", function () {
     var movieID = $(this).attr("rel");
@@ -239,12 +241,12 @@ function api_status() {
             //online
             $('#status').addClass("online");
             $('#led').addClass("led-green");
-            $('#status-text').html("Imdb api online");
+            $('#status-text').html("<a class=\"ex\" href=\"http://omdbapi.com\">Imdb api online</a>");
         } else {
             //offline
             $('#status').addClass("offline");
             $('#led').addClass("led-red");
-            $('#status-text').html("Imdb api offline");
+            $('#status-text').html("<a class=\"ex\" href=\"http://omdbapi.com\">Imdb api offline</a>");
         }
     })
 }

@@ -608,11 +608,16 @@ textarea {
     position: relative;
     top: 6px;
     left: 6px;
+    -webkit-app-region: no-drag;
 }
 #status-text{
     position: relative;
     top: -1px;
     left: 7px;
+}
+#status a{
+    color: #FFF;
+    text-decoration: none;
 }
 .load_icon{
     background-image: url("../img/loader.gif");
