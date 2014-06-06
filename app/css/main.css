@@ -613,6 +613,7 @@ textarea {
 #status-text{
     position: relative;
     top: -1px;
+    color: #FFF;
     left: 7px;
 }
 #status a{
