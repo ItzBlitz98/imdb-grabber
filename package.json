@@ -6,7 +6,8 @@
 
   "dependencies": {
     "request": "2.36.0",
-    "imgur-node-api": "0.0.2"
+    "imgur-node-api": "0.0.2",
+    "youtube-search": "0.1.2"
   },
   "devDependencies": {
     "matchdep": "~0.1.2",

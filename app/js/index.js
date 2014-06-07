@@ -1,5 +1,6 @@
 var request = require("request");
 var imgur = require('imgur-node-api');
+var search = require('youtube-search');
 var path = require('path');
 var gui = require('nw.gui');
 var win = gui.Window.get();
@@ -15,7 +16,7 @@ $("body").on("click", "a.ex", function () {
 });
 
 $.when(
-    $.getJSON("https://cdn.rawgit.com/ItzBlitz98/imdb-grabber/508b267168aeca0570341db37e8fd2b9a35e3334/app/release_version.json", function(data) {
+    $.getJSON("https://rawgit.com/ItzBlitz98/imdb-grabber/master/app/release_version.json", function(data) {
         new_version = data.version
     }),
     $.getJSON("../release_version.json", function(data) {
@@ -40,7 +41,7 @@ $("#search").click(function () {
 
 });
 
-$('#movie_search').myNoteAjaxPlugin({waitFor: '500'});
+$('#movie_search').myNoteAjaxPlugin({waitFor: '400'});
 
 function moviesearch(title){
     var title = $('#movie_search').val();
@@ -180,9 +181,9 @@ function getmovie(title) {
                 var imdb = movie.imdbID;
                 var imgurl = movie.Poster;
 
-                var bbcode_movie = "[b]Title:[/b] " + title + "\n\n[b]Year:[/b] " + year + "\n\n[b]Genre:[/b] " + genre + "\n\n[b]Rating:[/b] " + rating + "\n\n[b]Runtime:[/b] " + runtime + "\n\n[b]Director:[/b] " + director + "\n\n[b]Cast:[/b] " + cast + "\n\n[b]Plot:[/b] " + plot + "\n\n[b]Imdb url:[/b] [code]http://www.imdb.com/title/" + imdb + "/[/code]";
+                var bbcode_movie = "[b]Title:[/b] " + title + "\n\n[b]Year:[/b] " + year + "\n\n[b]Genre:[/b] " + genre + "\n\n[b]Rating:[/b] " + rating + "\n\n[b]Runtime:[/b] " + runtime + "\n\n[b]Director:[/b] " + director + "\n\n[b]Cast:[/b] " + cast + "\n\n[b]Plot:[/b] " + plot + "\n\n[b]Imdb url:[/b] [code]http://www.imdb.com/title/" + imdb + "/[/code]\n\n";
 
-                var html_movie = "<b>Title:</b> " + title + "<br />\n\n<b>Year:</b> " + year + "<br />\n\n<b>Genre:</b> " + genre + "<br />\n\n<b>Rating:</b> " + rating + "<br />\n\n<b>Runtime:</b> " + runtime + "<br />\n\n<b>Director:</b> " + director + "<br />\n\n<b>Cast:</b> " + cast + "<br />\n\n<b>Plot:</b> " + plot + "<br />\n\n<b>Imdb url:</b> <a href=\"http://www.imdb.com/title/" + imdb + "/\">http://www.imdb.com/title/" + imdb + "/</a>";
+                var html_movie = "<b>Title:</b> " + title + "<br />\n\n<b>Year:</b> " + year + "<br />\n\n<b>Genre:</b> " + genre + "<br />\n\n<b>Rating:</b> " + rating + "<br />\n\n<b>Runtime:</b> " + runtime + "<br />\n\n<b>Director:</b> " + director + "<br />\n\n<b>Cast:</b> " + cast + "<br />\n\n<b>Plot:</b> " + plot + "<br />\n\n<b>Imdb url:</b> <a href=\"http://www.imdb.com/title/" + imdb + "/\">http://www.imdb.com/title/" + imdb + "/</a><br />\n\n";
 
                 $('#movie_title span').html(title);
                 $('#movie_year span').html(year);
@@ -197,6 +198,8 @@ function getmovie(title) {
                 $("textarea#txtarea.bbcode").text(bbcode_movie);
 
                 $("textarea#txtarea2.html").text(html_movie);
+
+                getYoutube(title);
 
                 imgurUpload(imgurl);
             }
@@ -213,7 +216,7 @@ function imgurUpload(imgurl) {
             var imgurLink = res.data.link;
             $('#movie_cover img').attr("src", imgurLink);
             $('.bbcode').prepend("[img]" + imgurLink + "[/img]\n\n");
-            //$('.html').prepend("<img src=\" " + imgurLink + " \"/> ");
+            $('.html').prepend(document.createTextNode("<img src=\"" + imgurLink + "\"><br />\n\n"));
             hideloader();
             showmodal();
         });
@@ -221,9 +224,25 @@ function imgurUpload(imgurl) {
         var imgurLink = "https://i.imgur.com/qdt2XZO.jpg";
         $('#movie_cover img').attr("src", imgurLink);
         $('.bbcode').prepend("[img]" + imgurLink + "[/img]\n\n");
+        $('.html').prepend(document.createTextNode("<img src=\"" + imgurLink + "\"><br />\n\n"));
         hideloader();
         showmodal();
     }
+}
+
+function getYoutube(title){
+    $('#loading_text').html("Fetching youtube video");
+    var opts = {
+        maxResults: 1,
+        startIndex: 1
+    };
+
+    search(title + ' trailer', opts, function(err, results) {
+        if(err){ } else {
+            $('.bbcode').append("[b]Movie trailer:[/b] [code]" + results[0].url + "[/code]\n\n");
+            $('.html').append(document.createTextNode("<b>Movie trailer:</b> <a href=\"" + results[0].url + "\">" + results[0].url + "</a><br />\n\n"));
+        }
+    });
 }
 
 function showmodal() {
