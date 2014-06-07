@@ -15,7 +15,7 @@ $("body").on("click", "a.ex", function () {
 });
 
 $.when(
-    $.getJSON("https://rawgit.com/ItzBlitz98/imdb-grabber/master/app/release_version.json", function(data) {
+    $.getJSON("https://cdn.rawgit.com/ItzBlitz98/imdb-grabber/14309aa0d0f6c8b0c815af3340014b582532fb54/app/release_version.json", function(data) {
         new_version = data.version
     }),
     $.getJSON("../release_version.json", function(data) {
