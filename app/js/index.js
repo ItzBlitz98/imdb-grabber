@@ -3,11 +3,28 @@ var imgur = require('imgur-node-api');
 var path = require('path');
 var gui = require('nw.gui');
 var win = gui.Window.get();
+var new_version;
+var current_version;
+
 api_status();
+
 $("body").on("click", "a.ex", function () {
     var href = $(this).attr('href');
     gui.Shell.openExternal(href);
     return false;
+});
+
+$.when(
+    $.getJSON("https://rawgit.com/ItzBlitz98/imdb-grabber/master/app/release_version.json", function(data) {
+        new_version = data.version
+    }),
+    $.getJSON("../release_version.json", function(data) {
+        current_version = data.version
+    })
+).then(function() {
+    if (current_version !== new_version) {
+        $('#version').html("<a class=\"ex\" href=\"https://github.com/ItzBlitz98/imdb-grabber/releases/tag/v" + new_version + "\">New version is out click me to get it.</a>")
+    }
 });
 
 $("#search").click(function () {

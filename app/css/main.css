@@ -605,9 +605,10 @@ textarea {
     box-shadow: #000 0 -1px 7px 1px, inset #460 0 -1px 9px, #7D0 0 2px 12px;
 }
 #status{
-    position: relative;
+    position: absolute;
     top: 6px;
     left: 6px;
+    width: 115px;
     -webkit-app-region: no-drag;
 }
 #status-text{
@@ -629,4 +630,13 @@ textarea {
     right: 154px;
     top: 63px;
     display: none;
+}
+#version{
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    -webkit-app-region: no-drag;
+}
+#version a{
+    color: #FFF;
 }
